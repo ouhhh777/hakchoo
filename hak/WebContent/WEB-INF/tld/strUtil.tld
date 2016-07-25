@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+	<description>JSTL 1.1 functions library</description>
+	<display-name>StringUtil</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>sUtil</short-name>
+	<uri>StringUtils</uri>
+	
+	<function>
+		<description>getReplace</description>
+		<name>getReplace</name>
+		<function-class>shtr.util.StringUtil</function-class>
+		<function-signature>java.lang.String getReplace(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>${sUtil:getReplace(str, rep, tok)}</example>
+	</function>
+	
+	<function>
+		<description>getComma</description>
+		<name>getComma</name>
+		<function-class>shtr.util.StringUtil</function-class>
+		<function-signature>java.lang.String getComma(java.lang.String)</function-signature>
+		<example>${sUtil:getComma(str)}</example>
+	</function>
+	
+	<function>
+		<description>clobToString</description>
+		<name>clobToString</name>
+		<function-class>shtr.util.StringUtil</function-class>
+		<function-signature>java.lang.String clobToString(java.sql.Clob)</function-signature>
+		<example>${sUtil:clobToString(c)}</example>
+	</function>
+	
+</taglib>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+		<!-- 회원 리스트 조회 -->
+	<select id="selAllMember" parameterType="front.vo.MemberVO" resultType="front.vo.MemberVO">
+		SELECT USER_CODE
+			 , USER_EMAIL
+			 , USER_AGE
+		  FROM TB_USER
+		 WHERE USER_EMAIL = #{user_email};
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="memberLogin" parameterType="front.vo.MemberVO" resultType="front.vo.MemberVO">
+		SELECT USER_CODE
+			 , USER_EMAIL
+		     , USER_PASSWORD
+		     , USER_AGE
+		  FROM TB_USER
+		 WHERE USER_DEL_YN = '0'
+		   AND USER_EMAIL = #{user_email} 
+		   AND USER_PASSWORD = #{user_password};
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="insMember" parameterType="front.vo.MemberVO">
+		INSERT INTO TB_USER(
+			USER_EMAIL
+		  , USER_PASSWORD
+		  , USER_AGE
+		  , USER_SIGN_UP_DATE
+		  , USER_DEL_YN
+		) VALUES (
+		   #{user_email}
+		 , #{user_password}
+		 , #{user_age}
+		 , now()
+		 , 0
+		);
+	</insert>
+</mapper>

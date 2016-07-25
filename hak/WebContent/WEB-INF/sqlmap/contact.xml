@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contact">
+
+		
+	<!-- Contact 삽입 -->
+	<insert id="insert_contact" parameterType="front.vo.ContactVO">
+		INSERT INTO TB_CONTACT(
+			CONTACT_USER_EMAIL
+		  , CONTACT_TYPE
+		  , CONTACT_CONTENT
+		  , CONTACT_DATE
+		  , CONTACT_CONFIRM
+		) VALUES (
+		   #{contact_user_email}
+		 , #{contact_type}
+		 , #{contact_content}
+		 , now()
+		 , 0
+		);
+	</insert>
+</mapper>

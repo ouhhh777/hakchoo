@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="address">
+
+	<!-- 시(지역) 이름 가져옴 -->
+	<select id="find_si_name_list" resultType="front.vo.AddressVO">
+		SELECT SI_NAME
+		  FROM TB_ADDRESS_SI;
+	</select>
+	
+	<!-- 시 이름으로  시 코드 가져옴 -->
+	<select id="find_si_code_by_si_name" parameterType="String" resultType="int">
+		SELECT SI_CODE
+		  FROM TB_ADDRESS_SI
+		  WHERE SI_NAME = #{si_name};
+	</select>
+	
+	<!-- 구(지역) 이름 가져옴 -->
+	<select id="find_gu_name_list" parameterType="int" resultType="front.vo.AddressVO">
+		SELECT GU_NAME
+		  FROM TB_ADDRESS_GU
+		  WHERE GU_SI_CODE = #{si_code};
+	</select>
+	
+	<!-- 구 이름으로  구 코드 가져옴 -->
+	<select id="find_gu_code_by_gu_name" parameterType="String" resultType="int">
+		SELECT GU_CODE
+		  FROM TB_ADDRESS_GU
+		  WHERE GU_NAME = #{gu_name};
+	</select>
+	
+	<!-- 동(지역) 이름 가져옴 -->
+	<select id="find_dong_name_list"  parameterType="int"  resultType="front.vo.AddressVO">
+		SELECT DONG_NAME
+		  FROM TB_ADDRESS_DONG
+		  WHERE DONG_GU_CODE = #{gu_code};
+	</select>
+	
+	
+</mapper>
